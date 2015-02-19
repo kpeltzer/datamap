@@ -20,15 +20,15 @@ function getComplaintData()
 	// YOUR CODE GOES HERE
 	$.getJSON('http://clownfish.io/complaints/get?apikey='+api_key, function(data) {
 		//Create new array
-		var a = [];
+		var complaints = [];
 		
 		//for each 311 instance in data, 
 		$.each(data, function(index, complaint) {
 			var location = new google.maps.LatLng(complaint.LAT, complaint.LNG);
-			a.push(location);
+			complaints.push(location);
 		});
 		
-		updateHeatmap(a);
+		updateHeatmap(complaints);
 		
 	});
 }
