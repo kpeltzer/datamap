@@ -44,10 +44,6 @@ function getComplaintData()
 //    each complaint type and stuff it in the dropdown menu. 
 function populateComplaintTypeMenu()
 {
-	$.getJSON('http://clownfish.io/complainttypes/get?apikey='+api_key+'&agency=NYPD', function(data) {
-	
-		console.log(data);
-	});
 }
 
 /************** TASK 3 **************/    
