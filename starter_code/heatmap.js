@@ -1,7 +1,7 @@
 // You will perform all your work in this file. 
 
 // Paste your API key here
-var api_key = "";
+var api_key = "54e555ad3f8e4";
 
 /************** TASK 1 **************/  
 //  
@@ -15,8 +15,22 @@ var api_key = "";
 //	  e.g. new google.maps.LatLng(latitude, longitude)
 // 3) Call updateHeatmap() and pass this array as a parameter to it.
 function getComplaintData()
+
 {
 	// YOUR CODE GOES HERE
+	$.getJSON('http://clownfish.io/complaints/get?apikey='+api_key, function(data) {
+		//Create new array
+		var a = [];
+		
+		//for each 311 instance in data, 
+		$.each(data, function(index, complaint) {
+			var location = new google.maps.LatLng(complaint.LAT, complaint.LNG);
+			a.push(location);
+		});
+		
+		updateHeatmap(a);
+		
+	});
 }
 
 /************** TASK 2 **************/ 
@@ -30,7 +44,10 @@ function getComplaintData()
 //    each complaint type and stuff it in the dropdown menu. 
 function populateComplaintTypeMenu()
 {
-	// YOUR CODE GOES HERE
+	$.getJSON('http://clownfish.io/complainttypes/get?apikey='+api_key+'&agency=NYPD', function(data) {
+	
+		console.log(data);
+	});
 }
 
 /************** TASK 3 **************/    
